@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchCourses, fetchStudents, updateStudent } from '../api/mockApi';
-import StudentForm, { type StudentFormValues } from '../components/Registration';
+import Registration, { type StudentFormValues } from '../components/Registration';
 import type { Course, Student } from '../types';
 
-const EditStudent: React.FC = () => {
+const EditStd: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
     const [student, setStudent] = useState<Student | null>(null);
@@ -55,7 +55,7 @@ const EditStudent: React.FC = () => {
     return (
         <div className="max-w-xl mx-auto mt-8">
             <h2 className="text-2xl font-semibold mb-4">Edit Student</h2>
-            <StudentForm
+            <Registration
                 onSubmit={handleUpdate}
                 courses={courses}
                 defaultValues={{
@@ -68,4 +68,4 @@ const EditStudent: React.FC = () => {
     );
 };
 
-export default EditStudent;
+export default EditStd;

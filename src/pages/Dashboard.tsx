@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchStudents, deleteStudent, fetchCourses } from '../api/mockApi';
 import type { Student, Course } from '../types';
-import { runEventLoopDemo } from '../utils/EventLoopDemo';
-import StudentList from '../components/ViewList';
+import { EventLoopDemo } from '../utils/EventLoopDemo';
+import ViewList from '../components/ViewList';
 
 const Dashboard: React.FC = () => {
     const [students, setStudents] = useState<Student[]>([]);
@@ -20,7 +20,7 @@ const Dashboard: React.FC = () => {
 
     useEffect(() => {
         loadData();
-        runEventLoopDemo();
+        EventLoopDemo();
         // Only for this which is mentione in the assesment PDF 
         // "Implement a scenario that demonstrates knowledge of the event loop (e.g.,setTimeout/setInterval with async code)." 
     }, []);
@@ -41,14 +41,18 @@ const Dashboard: React.FC = () => {
                     + Add Student
                 </Link>
             </div>
+            <br />
+            <h4>List of the students:-</h4>
+            <hr />
+            <br />
 
-            <StudentList students={students} getCourseName={getCourseName} onDelete={handleDelete} />
+            <ViewList students={students} getCourseName={getCourseName} onDelete={handleDelete} />
             <br></br>
             <div>
                 <br />
                 <hr></hr>
                 <br />
-                <button onClick={runEventLoopDemo} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                <button onClick={EventLoopDemo} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
                     Event Loop Demo
                 </button>
                 <p className="text-sm text-gray-500 mt-2">

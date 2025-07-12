@@ -8,7 +8,7 @@ type Props = {
   error?: string;
 };
 
-const CourseSelect: React.FC<Props> = ({ value, onChange, error }) => {
+const Courses: React.FC<Props> = ({ value, onChange, error }) => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [apiError, setApiError] = useState<string | null>(null);
@@ -47,4 +47,4 @@ const CourseSelect: React.FC<Props> = ({ value, onChange, error }) => {
   );
 };
 
-export default CourseSelect;
+export default Courses;

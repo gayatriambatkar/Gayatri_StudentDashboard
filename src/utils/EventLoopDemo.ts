@@ -8,7 +8,7 @@
  * Step 3 (from Promise)
  * Step 2 (from setTimeout)
  */
-export const runEventLoopDemo = () => {
+export const EventLoopDemo = () => {
   console.log("Event Loop Demo: Step 1");
 
   setTimeout(() => {

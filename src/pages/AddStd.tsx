@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchCourses, saveStudent } from '../api/mockApi';
-import StudentForm, { type StudentFormValues } from '../components/Registration';
+import Registration, { type StudentFormValues } from '../components/Registration';
 import type { Course, Student } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
-const AddStudent: React.FC = () => {
+const AddStd: React.FC = () => {
     const [courses, setCourses] = useState<Course[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -45,9 +45,9 @@ const AddStudent: React.FC = () => {
     return (
         <div className="max-w-xl mx-auto mt-8">
             <h2 className="text-2xl font-semibold mb-4">Add Student</h2>
-            <StudentForm onSubmit={handleAddStudent} courses={courses} />
+            <Registration onSubmit={handleAddStudent} courses={courses} />
         </div>
     );
 };
 
-export default AddStudent;
+export default AddStd;

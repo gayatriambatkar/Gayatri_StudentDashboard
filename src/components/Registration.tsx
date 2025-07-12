@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import type { Course } from '../types';
+import { useNavigate } from 'react-router-dom';
 
 export type StudentFormValues = {
   name: string;
@@ -15,9 +16,10 @@ type Props = {
   defaultValues?: Partial<StudentFormValues>;
 };
 
-const StudentForm: React.FC<Props> = ({ onSubmit, courses, defaultValues }) => {
+const Registration: React.FC<Props> = ({ onSubmit, courses, defaultValues }) => {
   const { register, handleSubmit, formState: { errors }, } = useForm<StudentFormValues>({ defaultValues, });
 
+  const navigate = useNavigate();
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded shadow-md space-y-4">
       <div>
@@ -75,8 +77,15 @@ const StudentForm: React.FC<Props> = ({ onSubmit, courses, defaultValues }) => {
       <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" >
         Save Student
       </button>
+      <br />
+      <hr />
+      <br />
+      <button type="button" onClick={() => navigate(-1)} className="text-blue-600 hover:underline text-sm w-fit" >
+        ← Cancel / Back
+      </button>
     </form>
+
   );
 };
 
-export default StudentForm;
+export default Registration;
